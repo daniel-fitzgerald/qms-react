@@ -16,12 +16,56 @@ body {
     background: #d5d2ca;
 }
 
+.lineage {
+    display: none;
+}
+
 @media screen and (min-width: 968px) {
   .banner {
       display: block;
       max-width: 1170px;
       margin: 0 auto;
   }
+
+  .lineage {
+    display: block;
+    max-width: 1170px;
+    margin: 0 auto;
+    background-color: #d5d2ca;
+    width: 100%;
+    padding: .5em 1em;
+    overflow: hidden;
+    clear: both;
+    }
+
+    .lineage li {
+    display: inline-block;
+    margin-right: .2em;
+    font-size: 14px;
+    font-size: .875rem;
+    }
+
+    .lineage li a {
+    color: #284e36;
+    text-decoration: none;
+    font-size: 14px;
+    font-size: .875rem;
+    font-weight: bold;
+    }
+
+    .lineage li:after {
+    /* font-family: 'FontAwesome'; */
+    /* content: '\f101'; */
+    content: '>';
+    font-size: 12px;
+    font-size: .75rem;
+    color: #284e36;
+    margin: 0 .3em 0 .6em;
+    }
+
+    .lineage li:last-child:after, .lineage li.last:after {
+    content: '';
+    }
 }
 
 .banner {

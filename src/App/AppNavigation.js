@@ -9,8 +9,10 @@ import Reports from '../Reports'
 import Enquiries from '../Enquiries'
 import Settings from '../Settings'
 
+let HomeRedirect = (props) => <Redirect exact from="/" to="/home" />
+
 let AppRoutes = () => <div>
-    <Redirect from="/" to="/home" />
+    <Route exact path="/" component={HomeRedirect} />
     <Route path="/home" component={Home} />
     <Route path="/entitlement" component={Entitlement} />
     <Route path="/certification" component={Certification} />
