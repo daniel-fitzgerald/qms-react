@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Content from '../core/Content'
+import Content from '../App/Content'
 
 let Home = () => <Content title="Home">
     home!?
