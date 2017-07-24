@@ -6,15 +6,13 @@ import Footer from './Footer'
 
 import './layout.css'
 
-let AppLayout = ({ appRoutes, navigationItems }) => <div className="body-wrapper">
+let AppLayout = ({ appRoutes, navigationItems, location }) => <div className="body-wrapper">
     <div className="page-wrapper">
         <Header />
-        <MainNavigation navigationItems={navigationItems} />
+        <MainNavigation navigationItems={navigationItems} location={location} />
         <div className="banner" role="banner"></div>
         <div className="breadcrumbs"></div>
-        <div className="main clearfix">
-            {appRoutes}
-        </div>
+        {appRoutes}
         <Footer />
     </div>
 </div>

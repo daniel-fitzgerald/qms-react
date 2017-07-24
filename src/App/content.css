@@ -1,0 +1,175 @@
+.main {
+    margin-top: 0.625em;
+    padding: .5em;
+    background: #fff;
+    color: #343434;
+    min-height: 300px;
+}
+
+.page-content {
+    color: #000000;
+    font-size: 14px;
+    font-size: .875rem;
+    font-family: Calibri, arial, sans-serif;
+}
+
+.page-content h1 {
+    color: #165788;
+    font-size: 24px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: .5em 0 .3em;
+}
+
+.page-content p {
+    margin: 0 0 .8em;
+    padding: 0;
+}
+
+@media screen and (min-width: 968px) {
+  .main {
+    padding: 1em;
+    background: #fff;
+    margin: 0 1em 1em;
+  }
+
+    .page-content h1 {
+        font-size: 30px;
+        font-size: 1.875rem;
+        margin: 0 0 .3em;
+    }
+}
+
+@media screen and (min-width: 1170px) {
+  .main {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
+
+  .page-content.full-width {
+        width: 80%;
+        padding-right: 0;
+    }
+
+    .secondary-nav {
+        float: left;
+        width: 20%;
+        margin-top: 1em;
+    }
+
+    .page-content {
+        float: left;
+        width: 57%;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-top: 1em;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+}
+
+.secondary-nav__section-title {
+    display: block;
+    padding: .4em .8em;
+    padding-left: 35px;
+    position: relative;
+    background-color: #343434;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all .3s ease;
+    border-bottom: 1px solid #ffffff;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.secondary-nav ul.root {
+    display: block;
+}
+
+.secondary-nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.secondary-nav ul.root li {
+    position: relative;
+    overflow: visible;
+}
+
+.secondary-nav ul.root li.has-subs > a {
+    position: relative;
+    padding-right: 20px;
+}
+
+.secondary-nav ul.root li a {
+    background: #cecbc5;
+    display: block;
+    padding: .7em .8em;
+    color: #000000;
+    transition: all .3s ease;
+    text-decoration: none;
+    border-bottom: 1px solid #ffffff;
+}
+
+.secondary-nav__links li.active:hover > ul, .secondary-nav ul.root li.selected:hover > ul, .secondary-nav ul.root li.selected > ul.dynamic {
+    position: static;
+    border: 0;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+.secondary-nav ul.root li.selected > ul.dynamic {
+    position: static;
+    border: 0;
+    width: 100% !important;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+.secondary-nav__links li li a, .secondary-nav ul.root li li a, .secondary-nav__links li.active:hover li a, .secondary-nav ul.root li.selected li a {
+    padding-right: 20px;
+}
+
+.secondary-nav__links li li a, .secondary-nav ul.root li li a, .secondary-nav__links li.active:hover li a, .secondary-nav ul.root li.selected li a {
+    padding: .4em .8em .4em 1.8em;
+    background-color: #e7e5e2;
+}
+
+.secondary-nav__links li a, .secondary-nav ul.root li a {
+    background: #cecbc5;
+    display: block;
+    padding: .7em .8em;
+    color: #000000;
+    transition: all .3s ease;
+    text-decoration: none;
+    border-bottom: 1px solid #ffffff;
+}
+
+.secondary-nav__links li li a:hover, .secondary-nav__links li li a:focus, .secondary-nav__links li li a:active, .secondary-nav ul.root li li a:hover, .secondary-nav ul.root li li a:focus, .secondary-nav ul.root li li a:active {
+    background-color: #dddddd;
+}
+
+.secondary-nav__links li li a, .secondary-nav ul.root li li a, .secondary-nav__links li.active:hover li a, .secondary-nav ul.root li.selected li a {
+    padding-right: 20px;
+}
+
+.secondary-nav__links li li a, .secondary-nav ul.root li li a, .secondary-nav__links li.active:hover li a, .secondary-nav ul.root li.selected li a {
+    padding: .4em .8em .4em 1.8em;
+    background-color: #e7e5e2;
+}
+
+.secondary-nav__links li a:hover, .secondary-nav__links li a:focus, .secondary-nav__links li a:active, .secondary-nav ul.root li a:hover, .secondary-nav ul.root li a:focus, .secondary-nav ul.root li a:active {
+    background-color: #b1aca3;
+    text-decoration: underline;
+}
+
+.secondary-nav ul.root li.selected > a {
+    background-color: #80ded6;
+}

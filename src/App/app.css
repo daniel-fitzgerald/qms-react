@@ -1,0 +1,19 @@
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after, .clearfix:before {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfixmobile {  
+  *zoom: 1;
+}
+.clearfixmobile:after, .clearfixmobile:before {
+  display: table;
+  line-height: 0;
+  content: "";
+}

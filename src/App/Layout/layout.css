@@ -16,60 +16,14 @@ body {
     background: #d5d2ca;
 }
 
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:after, .clearfix:before {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-.clearfix:after {
-  clear: both;
-}
-.clearfixmobile {  
-  *zoom: 1;
-}
-.clearfixmobile:after, .clearfixmobile:before {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-
 @media screen and (min-width: 968px) {
   .banner {
       display: block;
       max-width: 1170px;
       margin: 0 auto;
   }
-
-  .main {
-    padding: 1em;
-    background: #fff;
-    margin: 0 1em 1em;
-  }
 }
 
 .banner {
     border-top: 5px solid #823c47;
-}
-
-@media screen and (min-width: 1170px) {
-  .main {
-      padding: 0 1em;
-      margin: 0 auto;
-  }
-  .main {
-    max-width: 1170px;
-    margin: 0 auto;
-    padding: 1.25em 0;
-  }
-}
-
-.main {
-    margin-top: 0.625em;
-    padding: .5em;
-    background: #fff;
-    color: #343434;
-    min-height: 300px;
 }
