@@ -1,0 +1,40 @@
+.header-wrapper {
+    background-color: #857d6f;
+}
+
+.header {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.logo {
+    background: url(http://agriculture.gov.au/_catalogs/masterpage/Agriculture2015/css/files/da-logo.svg) no-repeat 0 0;
+    background-size: 100%;
+    display: block;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 1170px) {
+.logo {
+    float: left;
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+}
+
+@media screen and (min-width: 968px) {
+.logo {
+    width: 250px;
+    min-height: 80px;
+    margin: 1em 0;
+}
+}
+
+.app-title {
+    float: right;
+    font-size: 2em;
+    color: #fff;
+    margin-top: 36px;
+}
