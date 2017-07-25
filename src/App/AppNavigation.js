@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 
 import Home from '../Home'
 import Entitlement from '../Entitlement'
@@ -11,7 +11,7 @@ import Settings from '../Settings'
 
 let HomeRedirect = (props) => <Redirect exact from="/" to="/home" />
 
-let AppRoutes = () => <div>
+let AppRoutes = () => <Switch>
     <Route exact path="/" component={HomeRedirect} />
     <Route path="/home" component={Home} />
     <Route path="/entitlement" component={Entitlement} />
@@ -20,16 +20,16 @@ let AppRoutes = () => <div>
     <Route path="/reports" component={Reports} />
     <Route path="/enquiries" component={Enquiries} />
     <Route path="/settings" component={Settings} />
-</div>
+</Switch>
 
 const NavigationItems = [
-    { label: 'Home', to: '/home' },
-    { label: 'Entitlement', to: '/entitlement' },
-    { label: 'Certification', to: '/certification' },
-    { label: 'Payments', to: '/payments' },
-    { label: 'Reports', to: '/reports' },
-    { label: 'Enquiries', to: '/enquiries' },
-    { label: 'Settings', to: '/settings' },
+    { label: 'Home', path: '/home' },
+    { label: 'Entitlement', path: '/entitlement' },
+    { label: 'Certification', path: '/certification' },
+    { label: 'Payments', path: '/payments' },
+    { label: 'Reports', path: '/reports' },
+    { label: 'Enquiries', path: '/enquiries' },
+    { label: 'Settings', path: '/settings' },
 ]
 
 export { AppRoutes, NavigationItems }

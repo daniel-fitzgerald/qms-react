@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 import './main-navigation.css'
 
-let getClassName = (to, location) => {
-    return `nav-item${location.pathname.startsWith(to) ? ' active' : ''}`
+let getClassName = (path, location) => {
+    return `nav-item${location.pathname.startsWith(path) ? ' active' : ''}`
 }
 
-let NavigationItem = ({ to, label, location }) => <li className={getClassName(to, location)}><Link to={to} className="level1"><span>{label}</span></Link></li>
+let NavigationItem = ({ path, label, location }) => <li className={getClassName(path, location)}><Link to={path} className="level1"><span>{label}</span></Link></li>
 
 let MainNavigation = ({ navigationItems, location }) => <div className="nav-wrapper clearfix">
     <nav className="main-navigation">

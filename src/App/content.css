@@ -173,3 +173,14 @@
 .secondary-nav ul.root li.selected > a {
     background-color: #80ded6;
 }
+
+.secondary-nav ul.root li .active a:focus {
+    background-color: #80ded6;
+    text-decoration: underline;
+    color: white;
+}
+
+.secondary-nav ul.root li .active a {
+    background-color: #80ded6;
+    text-decoration: underline;
+}

@@ -1,38 +1,40 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './content.css'
 
-// const secondaryNav = [
-//     { label: 'menu item 1', to: '/menu' },
-//     { label: 'menu item 2', to: '/menu' },
-//     { label: 'menu item 3', to: '/menu' },
-//     { label: 'menu item 4', to: '/menu' },
-//     { label: 'menu item 5', to: '/menu' },
-//     { label: 'menu item 6', to: '/menu' },
-//     { label: 'menu item 7', to: '/menu' },
-//     { label: 'menu item 8', to: '/menu' },
-// ]
+let checkActive = (path, location) => {
+    return location.pathname === path ? ' active' : ''
+}
 
-// let NavItem = ({ label, to }) => <li className="dynamic"><Link to={to}><span>{label}</span></Link></li>
+let checkSelected = (path, location) => {
+    return location.pathname === path ? 'selected' : ''
+}
 
-// let SecondaryNav = () => <div className="secondary-nav">
-//     <a className="secondary-nav__section-title" href="http://www.agriculture.gov.au">Home</a>
+let NavItem = ({ label, path, location }) => <li className={`dynamic${checkActive(path, location)}`}><Link to={path}><span>{label}</span></Link></li>
 
-//     <ul className="root">
-//         <li className="selected"><Link to="/<settings></settings>"><span>Settings</span></Link></li>
-//         <li>
-//             <ul className="dynamic">
-//                 {secondaryNav.map((navItem, index) => <NavItem key={index} {...navItem} />)}
-//             </ul>
-//         </li>
-//     </ul>
-// </div>
+let SecondaryNav = ({ secondaryNav, location }) => {
+    if (secondaryNav) {
+        return <div className="secondary-nav" >
+            <Link className="secondary-nav__section-title" to="/home">Home</Link>
+            <ul className="root">
+                <li className={checkSelected(secondaryNav.root.path, location)}><Link to={secondaryNav.root.path}><span>{secondaryNav.root.label}</span></Link></li>
+                <li>
+                    <ul className="dynamic">
+                        {secondaryNav.navItems.map((navItem, index) => <NavItem key={index} {...navItem} location={location} />)}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    } else {
+        return null
+    }
+}
 
-let Content = ({ title, children }) => {
+let Content = ({ title, children, secondaryNav, location }) => {
     document.title = title + ' - Quota Management System'
     return <div className="main clearfix">
-        {/* <SecondaryNav /> */}
+        <SecondaryNav secondaryNav={secondaryNav} location={location} />
         <div className="page-content full-width">
             <h1>{title}</h1>
             <div>
