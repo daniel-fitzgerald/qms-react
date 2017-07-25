@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import './content.css'
 
+import arrow from './arrow.svg'
+
 let checkActive = (path, location) => {
     return location.pathname.startsWith(path) ? ' active' : ''
 }
@@ -16,7 +18,7 @@ let NavItem = ({ label, path, location }) => <li className={`dynamic${checkActiv
 let SecondaryNav = ({ secondaryNav, location }) => {
     if (secondaryNav) {
         return <div className="secondary-nav" >
-            <Link className="secondary-nav__section-title" to="/home">Home</Link>
+            <Link className="secondary-nav__section-title" to="/home"><img src={arrow} className="back-arrow" alt="" /> Home</Link>
             <ul className="root">
                 <li className={checkSelected(secondaryNav.root.path, location)}><Link to={secondaryNav.root.path}><span>{secondaryNav.root.label}</span></Link></li>
                 <li>
