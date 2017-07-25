@@ -17,3 +17,56 @@
   line-height: 0;
   content: "";
 }
+
+table {
+    font-size: 13px;
+    margin-bottom: 15px;
+    padding: 0px;
+}
+
+table {
+    border: 1px solid #cde8ea;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table th {
+    font-weight: normal;
+    min-height: 0px;
+    line-height: normal;
+    padding: 4px 8px;
+    font-size: 13px;
+    color: #284e36;
+    background-color: #cde8ea;
+    border-right-color: #ffffff;
+}
+
+table td {
+    border: 1px solid #cde8ea;
+    padding: 4px;
+}
+
+a {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.static-data .label, .dynamic-data .label, .address-data .label {
+  font-weight: bold;
+  min-width: 10em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.grid-50 {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+input, textarea {
+  margin: 2px 0;
+  width: 15em;
+}

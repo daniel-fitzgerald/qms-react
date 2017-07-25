@@ -44,7 +44,7 @@
   .main {
     max-width: 1170px;
     margin: 0 auto;
-    padding: 0 1em;
+    padding: 0 1em 1em;
   }
 
   .page-content.full-width {

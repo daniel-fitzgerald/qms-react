@@ -3,8 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom'
 
 import Content from '../App/Content'
 
-import Exporter from './Exporter'
-
+import { ExporterList, Exporter } from './Exporter'
 
 const secondaryNav = {
     root: { label: 'Settings', path: '/settings' },
@@ -27,7 +26,6 @@ const secondaryNav = {
 }
 
 let SettingsHome = () => <div>
-    settings home!
     <ul>
         <li><Link to="/settings/exporter">Exporter</Link></li>
     </ul>
@@ -35,8 +33,9 @@ let SettingsHome = () => <div>
 
 let Settings = ({ location }) => <Content title="Settings" secondaryNav={secondaryNav} location={location}>
     <Switch>
-        <Route exact path="/settings" component={SettingsHome} />
-        <Route path="/settings/exporter" component={Exporter} />
+        <Route path="/settings/exporter/:id" component={Exporter} />
+        <Route path="/settings/exporter" component={ExporterList} />
+        <Route path="/settings" component={SettingsHome} />
     </Switch>
 </Content>
 

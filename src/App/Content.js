@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './content.css'
 
 let checkActive = (path, location) => {
-    return location.pathname === path ? ' active' : ''
+    return location.pathname.startsWith(path) ? ' active' : ''
 }
 
 let checkSelected = (path, location) => {
