@@ -27,10 +27,10 @@ let TableRow = ({ id, firstname, surname, email, phone, onEdit, onDisable, onPer
     <td>{surname}</td>
     <td>{email}</td>
     <td>{phone}</td>
-    <td><a onClick={onEdit(id)}>Edit</a> <a onClick={onDisable}>Disable</a> <a onClick={onPermissions}>Permissions</a></td>
+    <td><a onClick={onEdit(id)}>Edit</a> <a onClick={onDisable}>Disable</a> <a onClick={onPermissions(id)}>Permissions</a></td>
 </tr>
 
-let Exporter = ({ data, onChange, onChangeAddress, location, ...actions }) => <Content title="Exporter" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
+let Exporter = ({ data, onChange, onChangeAddress, location, onSave, onClose, ...contactActions }) => <Content title="Exporter" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
     <div>
         <div className="grid-50">
             <StaticData label="Name" value={data.name} />
@@ -48,6 +48,10 @@ let Exporter = ({ data, onChange, onChangeAddress, location, ...actions }) => <C
             <Address id="physicalAddress" label="Physical Address" data={data} onChangeAddress={onChangeAddress} />
         </div>
     </div>
+    <div className="page-actions">
+        <button type="button" onClick={onClose}>Close</button>
+        <button type="submit" onClick={onSave}>Save</button>
+    </div>
 
     <h3>Contacts</h3>
     <table>
@@ -61,7 +65,7 @@ let Exporter = ({ data, onChange, onChangeAddress, location, ...actions }) => <C
             </tr>
         </thead>
         <tbody>
-            {data.contacts.map((item, index) => <TableRow key={index} {...item} {...actions} />)}
+            {data.contacts.map((item, index) => <TableRow key={index} {...item} {...contactActions} />)}
         </tbody>
     </table>
 </Content>

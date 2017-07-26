@@ -173,3 +173,11 @@ input, textarea {
     width: 25%;
 }
 }
+
+.page-actions {
+    text-align: right;
+}
+
+.page-actions button {
+    margin-left: 1em;
+}

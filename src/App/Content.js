@@ -6,7 +6,6 @@ import './content.css'
 import arrow from './arrow.svg'
 
 let checkActive = (path, location) => {
-    console.log(path, location)
     return (location.pathname + '/').startsWith(path + '/') ? ' active' : ''
 }
 

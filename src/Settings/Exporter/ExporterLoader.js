@@ -27,8 +27,9 @@ class ExporterLoader extends Component {
         this.setState((prevState, props) => ({ data }))
     }
 
-    onPermissions = () => {
-        console.log('onPermissions')
+    onPermissions = (id) => () => {
+        const { history } = this.props
+        history.push(`/settings/exporter/${this.state.data.id}/permissions/${id}`)
     }
 
     onDisable = () => {
@@ -37,7 +38,18 @@ class ExporterLoader extends Component {
 
     onEdit = (id) => () => {
         const { history } = this.props
-        history.push(`/settings/exporter/contact/${id}`)
+        history.push(`/settings/exporter/${this.state.data.id}/contact/${id}`)
+    }
+
+    onSave = (e) => {
+        e.preventDefault()
+        console.log('save')
+    }
+
+    onClose = (e) => {
+        const { history } = this.props
+       
+        history.push('/settings/exporter')
     }
 
     render() {
@@ -45,7 +57,7 @@ class ExporterLoader extends Component {
         if (data === null) {
             return <div>loading</div>
         } else {
-            return <Exporter {...this.props} data={data} onChange={this.onChange} onChangeAddress={this.onChangeAddress} onEdit={this.onEdit} onDisable={this.onDisable} onPermissions={this.onPermissions} />
+            return <Exporter {...this.props} data={data} onChange={this.onChange} onChangeAddress={this.onChangeAddress} onEdit={this.onEdit} onDisable={this.onDisable} onPermissions={this.onPermissions} onSave={this.onSave} onClose={this.onClose} />
         }
     }
 }

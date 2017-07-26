@@ -8,7 +8,7 @@ import Payments from '../Payments'
 import Reports from '../Reports'
 import Enquiries from '../Enquiries'
 import Settings from '../Settings'
-import { ExporterList, Exporter } from '../Settings/Exporter'
+import { ExporterList, Exporter, Contact, Permissions } from '../Settings/Exporter'
 
 let HomeRedirect = (props) => <Redirect exact from="/" to="/home" />
 
@@ -20,6 +20,8 @@ let AppRoutes = () => <Switch>
     <Route path="/payments" component={Payments} />
     <Route path="/reports" component={Reports} />
     <Route path="/enquiries" component={Enquiries} />
+    <Route path="/settings/exporter/:exporterId/contact/:contactId" component={Contact} />
+    <Route path="/settings/exporter/:exporterId/permissions/:contactId" component={Permissions} />
     <Route path="/settings/exporter/:id" component={Exporter} />
     <Route path="/settings/exporter" component={ExporterList} />
     <Route path="/settings" component={Settings} />
