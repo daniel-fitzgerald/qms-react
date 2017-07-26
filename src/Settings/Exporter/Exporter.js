@@ -1,5 +1,9 @@
 import React from 'react'
 
+import Content from '../../App/Content'
+
+import SecondaryNav from '../SecondaryNav'
+
 let StaticData = ({ label, value }) => <div className="static-data"><span className="label">{label}</span><span>{value}</span></div>
 
 let Input = ({ id, label, data, onChange }) => <div className="dynamic-data"><label className="label" htmlFor={id}>{label}</label><input id={id} value={data[id]} onChange={onChange(id)} /></div>
@@ -21,8 +25,7 @@ let TableRow = ({ id, firstname, surname, email, phone, onEdit, onDisable, onPer
     <td><a onClick={onEdit(id)}>Edit</a> <a onClick={onDisable}>Disable</a> <a onClick={onPermissions}>Permissions</a></td>
 </tr>
 
-let Exporter = ({ data, onChange, onChangeAddress, ...actions }) => <div>
-    <h2>Exporter</h2>
+let Exporter = ({ data, onChange, onChangeAddress, location, ...actions }) => <Content title="Exporter" secondaryNav={SecondaryNav} location={location}>
     <div>
         <div className="grid-50">
             <StaticData label="Name" value={data.name} />
@@ -56,6 +59,6 @@ let Exporter = ({ data, onChange, onChangeAddress, ...actions }) => <div>
             {data.contacts.map((item, index) => <TableRow key={index} {...item} {...actions} />)}
         </tbody>
     </table>
-</div>
+</Content>
 
 export default Exporter
