@@ -33,14 +33,33 @@ let SecondaryNav = ({ secondaryNav, location }) => {
     }
 }
 
-let Content = ({ title, children, secondaryNav, location }) => {
+let Crumb = ({ label, path }) => <li><Link to={path}>{label}</Link></li>
+
+let Breadcrumbs = ({ breadcrumbs }) => {
+    if (breadcrumbs) {
+        return <div className="breadCrumb">
+            <ol className="lineage">
+                <li><Link to="/home">Home</Link></li>
+                {breadcrumbs.crumbs && breadcrumbs.crumbs.map((crumb, index) => <Crumb key={index} {...crumb} />)}
+                <li className="lastItem">{breadcrumbs.currentLabel}</li>
+            </ol>
+        </div>
+    } else {
+        return null
+    }
+}
+
+let Content = ({ title, children, secondaryNav, location, breadcrumbs }) => {
     document.title = title + ' - Quota Management System'
-    return <div className="main clearfix">
-        <SecondaryNav secondaryNav={secondaryNav} location={location} />
-        <div className="page-content full-width">
-            <h1>{title}</h1>
-            <div>
-                {children}
+    return <div>
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <div className="main clearfix">
+            <SecondaryNav secondaryNav={secondaryNav} location={location} />
+            <div className="page-content full-width">
+                <h1>{title}</h1>
+                <div>
+                    {children}
+                </div>
             </div>
         </div>
     </div>

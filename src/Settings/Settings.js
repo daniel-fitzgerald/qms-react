@@ -5,7 +5,11 @@ import Content from '../App/Content'
 
 import SecondaryNav from './SecondaryNav'
 
-let Settings = ({ location }) => <Content title="Settings" secondaryNav={SecondaryNav} location={location}>
+const breadcrumbs = {
+    currentLabel: 'Settings'
+}
+
+let Settings = ({ location }) => <Content title="Settings" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
     <ul>
         <li><Link to="/settings/exporter">Exporter</Link></li>
     </ul>

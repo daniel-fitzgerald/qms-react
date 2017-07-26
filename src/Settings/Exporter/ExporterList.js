@@ -4,9 +4,14 @@ import Content from '../../App/Content'
 
 import SecondaryNav from '../SecondaryNav'
 
+const breadcrumbs = {
+    crumbs: [{ path: '/settings', label: 'Settings' }],
+    currentLabel: 'Exporter List'
+}
+
 let TableRow = ({ id, name, abn, onEdit }) => <tr><td>{name}</td><td>{abn}</td><td><a onClick={onEdit(id)}>Edit</a></td></tr>
 
-let ExporterList = ({ data, location, ...actions }) => <Content title="Exporter List" secondaryNav={SecondaryNav} location={location}>
+let ExporterList = ({ data, location, ...actions }) => <Content title="Exporter List" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
     <table>
         <thead>
             <tr>
