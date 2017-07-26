@@ -26,7 +26,7 @@ const SecondaryNav = [
     {
         label: 'Setup', children: [
             { label: 'New Quota Definition', path: '/settings/quota-definition/new' },
-            { label: 'Manage Quto Definition', path: '/settings/quota-definition' },
+            { label: 'Manage Quota Definition', path: '/settings/quota-definition' },
         ]
     }
 ]
