@@ -6,27 +6,27 @@ import './content.css'
 import arrow from './arrow.svg'
 
 let checkActive = (path, location) => {
-    return location.pathname.startsWith(path) ? ' active' : ''
-}
-
-let checkSelected = (path, location) => {
-    return location.pathname === path ? 'selected' : ''
+    console.log(path, location)
+    return (location.pathname + '/').startsWith(path + '/') ? ' active' : ''
 }
 
 let NavItem = ({ label, path, location }) => <li className={`dynamic${checkActive(path, location)}`}><Link to={path}><span>{label}</span></Link></li>
+
+let NavRoot = ({ path, label, children, location }) =>
+    <ul className="root">
+        <li><a><span>{label}</span></a></li>
+        <li>
+            <ul className="dynamic">
+                {children.map((navItem, index) => <NavItem key={index} {...navItem} location={location} />)}
+            </ul>
+        </li>
+    </ul>
 
 let SecondaryNav = ({ secondaryNav, location }) => {
     if (secondaryNav) {
         return <div className="secondary-nav" >
             <Link className="secondary-nav__section-title" to="/home"><img src={arrow} className="back-arrow" alt="" /> Home</Link>
-            <ul className="root">
-                <li className={checkSelected(secondaryNav.root.path, location)}><Link to={secondaryNav.root.path}><span>{secondaryNav.root.label}</span></Link></li>
-                <li>
-                    <ul className="dynamic">
-                        {secondaryNav.navItems.map((navItem, index) => <NavItem key={index} {...navItem} location={location} />)}
-                    </ul>
-                </li>
-            </ul>
+            {secondaryNav.map((navItem, index) => <NavRoot key={index} {...navItem} location={location} />)}
         </div>
     } else {
         return null
