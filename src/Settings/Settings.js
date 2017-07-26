@@ -10,6 +10,7 @@ const breadcrumbs = {
 }
 
 let Settings = ({ location }) => <Content title="Settings" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
+    <h2>Maintenance Tables</h2>
     <ul className="landing-page-links biosecurity-bg">
         <li><Link to="/settings/cut-suffix">Cut Suffix</Link></li>
         <li><Link to="/settings/cut-code">Cut Code</Link></li>
@@ -25,6 +26,18 @@ let Settings = ({ location }) => <Content title="Settings" secondaryNav={Seconda
         <li><Link to="/settings/Works Accreditation">Works Accreditation</Link></li>
         <li><Link to="/settings/Office Locations">Office Locations</Link></li>
         <li><Link to="/settings/Global Exports">Global Exports</Link></li>
+    </ul>
+
+    <h2>Notification Templates</h2>
+    <ul className="landing-page-links biosecurity-bg">
+        <li><Link to="/settings/template/new">New Template</Link></li>
+        <li><Link to="/settings/template">Manage Template</Link></li>
+    </ul>
+
+    <h2>Setup</h2>
+    <ul className="landing-page-links biosecurity-bg">
+        <li><Link to="/settings/quota-definition/new">New Quota Definition</Link></li>
+        <li><Link to="/settings/quota-definition">Manage Quto Definition</Link></li>
     </ul>
 </Content>
 

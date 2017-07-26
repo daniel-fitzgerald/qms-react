@@ -86,10 +86,11 @@ input, textarea {
     -webkit-flex-flow: row wrap;
     padding-bottom: 1px;
     margin-bottom: 1em;
+    border-right: 1px solid #e1e1e1;
 }
 
 .biosecurity-bg {
-    background: url(http://agriculture.gov.au/_catalogs/masterpage/Agriculture2015/css/quicklink-bg/biosecurity-bg.jpg) repeat 0 0;
+    background: url(http://agriculture.gov.au/_catalogs/masterpage/Agriculture2015/css/quicklink-bg/biosecurity-bg.jpg) 100% top;
 }
 
 .landing-page-links li {
