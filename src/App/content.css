@@ -184,6 +184,11 @@
     text-decoration: underline;
 }
 
+.secondary-nav ul.root > li > a:after {
+    content: '\25bc';
+    float: right;
+}
+
 .lineage {
     display: none;
 }
