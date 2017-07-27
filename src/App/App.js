@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Layout from './Layout'
 import { AppRoutes, NavigationItems } from './AppNavigation'
 
+import 'react-virtualized/styles.css'
+
 import './app.css'
 
 let AppLayout = (props) => <Layout appRoutes={<AppRoutes />} navigationItems={NavigationItems} {...props} />

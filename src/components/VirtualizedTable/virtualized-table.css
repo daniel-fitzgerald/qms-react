@@ -1,0 +1,38 @@
+.ReactVirtualized__Table div:focus {
+    outline: none;
+}
+
+.ReactVirtualized__Table__headerColumn {
+    font-weight: normal;
+    min-height: 0px;
+    line-height: normal;
+    padding: 4px 8px;
+    color: #284e36;
+    background-color: #cde8ea;
+    border-right-color: #ffffff;
+}
+
+.ReactVirtualized__Table__headerRow {
+    background-color: #cde8ea;
+    border-top: 1px solid #cde8ea;
+}
+
+.ReactVirtualized__Table__rowColumn {
+    border-right: 1px solid #cde8ea;
+    border-bottom: 1px solid #cde8ea;
+    padding: 4px;
+}
+
+.ReactVirtualized__Table__headerColumn, .ReactVirtualized__Table__rowColumn, .ReactVirtualized__Table__headerColumn, .ReactVirtualized__Table__rowColumn   {
+    margin-right: 0 !important;
+}
+
+.ReactVirtualized__Table__headerRow {
+    text-transform: none !important;
+    text-align: center;
+}
+
+.ReactVirtualized__Table__headerColumn:first-of-type, .ReactVirtualized__Table__rowColumn:first-of-type {
+    border-left: 1px solid #cde8ea;
+    margin-left: 0 !important;
+}
