@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Content from '../../App/Content'
+import { Input, Textarea, Select, Checkbox } from '../../components/Input'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -11,14 +12,11 @@ const breadcrumbs = {
 
 let StaticData = ({ label, value }) => <div className="static-data"><span className="label">{label}</span><span>{value}</span></div>
 
-let Input = ({ id, label, data, onChange }) => <div className="dynamic-data"><label className="label" htmlFor={id}>{label}</label><input id={id} value={data[id]} onChange={onChange(id)} /></div>
-let Textarea = ({ id, label, data, onChange }) => <div className="dynamic-data"><label className="label" htmlFor={id}>{label}</label><textarea id={id} value={data[id]} onChange={onChange(id)} rows="5"></textarea></div>
-
 let Address = ({ id, label, data, onChangeAddress }) => <div className="address-data">
     <span className="label">{label}</span>
     <Input id="line1" label="Line 1" data={data[id]} onChange={onChangeAddress(id)} />
     <Input id="line2" label="Line 2" data={data[id]} onChange={onChangeAddress(id)} />
-    <Input id="state" label="State" data={data[id]} onChange={onChangeAddress(id)} />
+    <Select id="state" label="State" data={data[id]} onChange={onChangeAddress(id)} options={[{ value: 'ACT', label: 'ACT' }, { value: 'NSW', label: 'New South Wales' }]} />
     <Input id="postcode" label="Postcode" data={data[id]} onChange={onChangeAddress(id)} />
 </div>
 
@@ -30,7 +28,7 @@ let TableRow = ({ id, firstname, surname, email, phone, onEdit, onDisable, onPer
     <td><a onClick={onEdit(id)}>Edit</a> <a onClick={onDisable}>Disable</a> <a onClick={onPermissions(id)}>Permissions</a></td>
 </tr>
 
-let Exporter = ({ data, onChange, onChangeAddress, location, onSave, onClose, ...contactActions }) => <Content title="Exporter" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
+let Exporter = ({ data, onChange, onChangeAddress, location, onSave, onClose, onChangeAsAbove, ...contactActions }) => <Content title="Exporter" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
     <div>
         <div className="grid-50">
             <StaticData label="Name" value={data.name} />
@@ -44,8 +42,11 @@ let Exporter = ({ data, onChange, onChangeAddress, location, onSave, onClose, ..
             <Input id="mobile" label="Mobile" data={data} onChange={onChange} />
         </div>
         <div className="grid-50">
+            <Address id="physicalAddress" label="Address" data={data} onChangeAddress={onChangeAddress} />
+            <Checkbox id="asAbove" label="Postal as above" data={data} onChange={onChangeAsAbove} />
+            <fieldset disabled={data.asAbove}>
             <Address id="postalAddress" label="Postal Address" data={data} onChangeAddress={onChangeAddress} />
-            <Address id="physicalAddress" label="Physical Address" data={data} onChangeAddress={onChangeAddress} />
+            </fieldset>
         </div>
     </div>
     <div className="page-actions">

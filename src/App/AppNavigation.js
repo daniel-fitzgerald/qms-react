@@ -9,6 +9,7 @@ import Reports from '../Reports'
 import Enquiries from '../Enquiries'
 import Settings from '../Settings'
 import { ExporterList, Exporter, Contact, Permissions } from '../Settings/Exporter'
+import { CutCodeList, CutCode } from '../Settings/CutCode'
 
 let HomeRedirect = (props) => <Redirect exact from="/" to="/home" />
 
@@ -24,6 +25,8 @@ let AppRoutes = () => <Switch>
     <Route path="/settings/exporter/:exporterId/permissions/:contactId" component={Permissions} />
     <Route path="/settings/exporter/:id" component={Exporter} />
     <Route path="/settings/exporter" component={ExporterList} />
+    <Route path="/settings/cut-code/:id" component={CutCode} />
+    <Route path="/settings/cut-code" component={CutCodeList} />
     <Route path="/settings" component={Settings} />
 </Switch>
 

@@ -19,7 +19,7 @@
 }
 
 table {
-    font-size: 13px;
+
     margin-bottom: 15px;
     padding: 0px;
 }
@@ -36,7 +36,7 @@ table th {
     min-height: 0px;
     line-height: normal;
     padding: 4px 8px;
-    font-size: 13px;
+
     color: #284e36;
     background-color: #cde8ea;
     border-right-color: #ffffff;
@@ -66,9 +66,26 @@ a {
     vertical-align: top;
 }
 
-input, textarea {
+.dynamic-data {
   margin: 2px 0;
+}
+
+input, textarea, select {
   width: 15em;
+}
+
+.static-data {
+    margin: 2px 0;
+}
+
+.address-data .label  {
+    margin: 2px 0;
+    min-width: 10em;
+    display: inline-block;
+}
+
+input[type="checkbox"] {
+    width: auto;
 }
 
 .landing-page-links {
@@ -180,4 +197,14 @@ input, textarea {
 
 .page-actions button {
     margin-left: 1em;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+input, textarea, select, button {
+    font-size: 16px;
 }

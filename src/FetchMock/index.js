@@ -1,5 +1,46 @@
 import fetchMock from 'fetch-mock'
 
+fetchMock.get(/\.\/api\/settings\/cut-code\/.+/, {
+    id: 1,
+    code: '0536',
+    category: 'something',
+    description: 'some description',
+    certificateApplications: true,
+    cutSuffixes: [
+        { label: 'A: description', checked: true },
+        { label: 'B: other description', checked: true },
+        { label: 'C: another description', checked: false },
+        { label: 'D: some description', checked: true },
+    ]
+})
+
+fetchMock.get(/\.\/api\/settings\/cut-code/, [
+    {
+        id: 1,
+        code: '0536',
+        category: 'something',
+        description: 'some description'
+    },
+    {
+        id: 2,
+        code: '0537',
+        category: 'another',
+        description: 'another description'
+    },
+    {
+        id: 3,
+        code: '0538',
+        category: 'different',
+        description: 'different description'
+    },
+    {
+        id: 4,
+        code: '0539',
+        category: 'category',
+        description: 'description'
+    },
+])
+
 fetchMock.get(/\.\/api\/settings\/exporter\/.+\/contact\/.+/, {
     id: 1,
     firstname: 'some',
@@ -17,6 +58,7 @@ fetchMock.get(/\.\/api\/settings\/exporter\/.+/, {
     exporterNumber: '324234234',
     qmsEmail: 'eh@what.com',
     comments: 'some comment.',
+    asAbove: true,
     postalAddress: {
         line1: '1 fake st',
         line2: 'somehwere',

@@ -15,7 +15,20 @@ class ExporterLoader extends Component {
 
     onChange = (id) => (e) => {
         let data = Object.assign({}, this.state.data)
-        data[id] = e.target.value
+        if (e.target.type === 'checkbox') {
+            data[id] = e.target.checked || false
+        } else {
+            data[id] = e.target.value
+        }
+        this.setState((prevState, props) => ({ data }))
+    }
+
+    onChangeAsAbove = (id) => (e) => {
+        let data = Object.assign({}, this.state.data)
+        data[id] = e.target.checked || false
+        if (data[id]) {
+            data.postalAddress = Object.assign({}, data.physicalAddress)
+        }
         this.setState((prevState, props) => ({ data }))
     }
 
@@ -24,6 +37,9 @@ class ExporterLoader extends Component {
         let address = Object.assign({}, data[addressId])
         data[addressId] = address
         address[id] = e.target.value
+        if (data.asAbove) {
+            data.postalAddress[id] = e.target.value
+        }
         this.setState((prevState, props) => ({ data }))
     }
 
@@ -48,7 +64,7 @@ class ExporterLoader extends Component {
 
     onClose = (e) => {
         const { history } = this.props
-       
+
         history.push('/settings/exporter')
     }
 
@@ -57,7 +73,7 @@ class ExporterLoader extends Component {
         if (data === null) {
             return <div>loading</div>
         } else {
-            return <Exporter {...this.props} data={data} onChange={this.onChange} onChangeAddress={this.onChangeAddress} onEdit={this.onEdit} onDisable={this.onDisable} onPermissions={this.onPermissions} onSave={this.onSave} onClose={this.onClose} />
+            return <Exporter {...this.props} data={data} onChange={this.onChange} onChangeAddress={this.onChangeAddress} onEdit={this.onEdit} onDisable={this.onDisable} onPermissions={this.onPermissions} onSave={this.onSave} onClose={this.onClose} onChangeAsAbove={this.onChangeAsAbove} />
         }
     }
 }

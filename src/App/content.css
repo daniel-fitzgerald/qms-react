@@ -8,8 +8,6 @@
 
 .page-content {
     color: #000000;
-    font-size: 14px;
-    font-size: .875rem;
     font-family: Calibri, arial, sans-serif;
 }
 
@@ -208,15 +206,11 @@
     .lineage li {
     display: inline-block;
     margin-right: .2em;
-    font-size: 14px;
-    font-size: .875rem;
     }
 
     .lineage li a {
     color: #284e36;
     text-decoration: none;
-    font-size: 14px;
-    font-size: .875rem;
     font-weight: bold;
     }
 
@@ -224,8 +218,6 @@
     /* font-family: 'FontAwesome'; */
     /* content: '\f101'; */
     content: '\00bb';
-    font-size: 12px;
-    font-size: .75rem;
     color: #284e36;
     margin: 0 .3em 0 .6em;
     }

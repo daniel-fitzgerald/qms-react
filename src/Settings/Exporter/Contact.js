@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Content from '../../App/Content'
+import {Input } from '../../components/Input'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -11,8 +12,6 @@ let getBreadcrumbs = (match) => {
         currentLabel: 'Contact'
     }
 }
-
-let Input = ({ id, label, data, onChange }) => <div className="dynamic-data"><label className="label" htmlFor={id}>{label}</label><input id={id} value={data[id]} onChange={onChange(id)} /></div>
 
 let Contact = ({ data, location, match, onChange, onSave, onClose }) => <Content title="Contact" secondaryNav={SecondaryNav} location={location} breadcrumbs={getBreadcrumbs(match)}>
     <Input id="firstname" label="Firstname" data={data} onChange={onChange} />
