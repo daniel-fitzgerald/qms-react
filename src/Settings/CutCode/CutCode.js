@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Content from '../../App/Content'
-import { Input, Textarea } from '../../components/Input'
+import { Input, Textarea, Checkbox, StaticData, hasError } from '../../components/Input'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -12,10 +12,33 @@ let getBreadcrumbs = (match) => {
     }
 }
 
-let CutCode = ({ data, location, match, onChange, onSave, onClose }) => <Content title="Cut Code" secondaryNav={SecondaryNav} location={location} breadcrumbs={getBreadcrumbs(match)}>
-    <Input id="code" label="Code" data={data} onChange={onChange} />
-    <Input id="category" label="Category" data={data} onChange={onChange} />
-    <Textarea id="description" label="Description" data={data} onChange={onChange} />
+let CutSuffixCheckbox = ({ index, label, checked, onCutSuffixChange }) => <div><label><input type="checkbox" checked={checked} onChange={onCutSuffixChange(index)} /> {label}</label></div>
+
+let CutSuffixes = ({ data, errors, onCutSuffixChange }) => <div className={`dynamic-data${hasError('cutSuffixes', errors)}`}>
+    <span className="label">Cut Suffix</span>
+    <div style={{ display: 'inline-block' }}>
+        {data.cutSuffixes.map((cutSuffix, index) => <CutSuffixCheckbox key={index} index={index} {...cutSuffix} onCutSuffixChange={onCutSuffixChange} />)}
+        <div className="field-error">{errors['cutSuffixes']}</div>
+    </div>
+</div>
+
+let CutCode = ({ data, errors, location, match, onChange, onCutSuffixChange, onSave, onClose }) => <Content title="Cut Code" secondaryNav={SecondaryNav} location={location} breadcrumbs={getBreadcrumbs(match)}>
+    <Input id="code" label="Code" data={data} onChange={onChange} errors={errors} />
+    <Input id="category" label="Category" data={data} onChange={onChange} errors={errors} />
+    <Textarea id="description" label="Description" data={data} onChange={onChange} errors={errors} />
+    <Checkbox id="certificateApplications" label="Enable for Certificate Applications on QMS" data={data} onChange={onChange} />
+
+    <CutSuffixes data={data} errors={errors} onCutSuffixChange={onCutSuffixChange} />
+
+    <StaticData label="Created By" value={data.createdBy} />
+    <StaticData label="Date Created" value={data.dateCreated} />
+    <StaticData label="Modified By" value={data.modifiedBy} />
+    <StaticData label="Date Modified" value={data.dateModified} />
+
+    <div className="page-actions">
+        <button type="button" onClick={onClose}>Close</button>
+        <button type="submit" onClick={onSave}>Save</button>
+    </div>
 </Content>
 
 export default CutCode

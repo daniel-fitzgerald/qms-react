@@ -1,0 +1,90 @@
+.page-content h3 {
+    color: #284e36;
+    font-size: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.collapsefaq {
+ margin: .5em 0 .3em;
+}
+
+.collapsefaq h3.trigger a {
+    color: #333333;
+    display: block;
+    padding: 10px 15px;
+    background: #f1f1f1;
+    position: relative;
+    border: 1px solid #c1c1c1;
+    font-weight: bold;
+}
+
+.collapsefaq h3.trigger a, .collapsefaq .excoll a {
+    color: #005EB8;
+    font-size: 16px;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.collapsefaq-content {
+    /* margin: 0 1em; */
+    /* padding: 5px; */
+    padding: 15px;
+    width: 100%;
+    /* border: 1px solid #c1c1c1; */
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+.collapsefaq h3 {
+    margin-bottom: 0px;
+}
+
+.collapsefaq h3.trigger.expanded a {
+    /* color: #002f63; */
+    color: #000000;
+    background-color: #D2D2D2;
+    font-weight: bold;
+}
+
+.collapsefaq h3.trigger a:hover {
+    background-color: #D2D2D2;
+    color: #000000;
+}
+
+.collapsefaq h3.trigger.expanded a {
+    /* color: #002f63; */
+    color: #000000;
+    background-color: #D2D2D2;
+    font-weight: bold;
+}
+
+.collapsefaq h3.trigger.expanded a:after {
+    content: '\2193';
+    display: inline-block;
+    margin-right: 5px;
+    position: absolute;
+    right: 5px;
+    font-size: 24px;
+    font-size: 1.5rem;
+    color: #000000;
+    top: 50%;
+    margin-top: -14px;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.collapsefaq h3.trigger a:after {
+    content: '\2193';
+    display: inline-block;
+    margin-right: 5px;
+    position: absolute;
+    right: 5px;
+    font-size: 24px;
+    font-size: 1.5rem;
+    color: #000000;
+    top: 50%;
+    margin-top: -14px;
+}

@@ -5,6 +5,7 @@ import CutCode from './CutCode'
 class CutCodeLoader extends Component {
     state = {
         data: null,
+        errors: {},
         messages: null
     }
 
@@ -15,8 +16,46 @@ class CutCodeLoader extends Component {
 
     onChange = (id) => (e) => {
         let data = Object.assign({}, this.state.data)
-        data[id] = e.target.value
-        this.setState((prevState, props) => ({ data }))
+        if (e.target.type === 'checkbox') {
+            data[id] = e.target.checked || false
+        } else {
+            data[id] = e.target.value
+        }
+        let errors = this.validate(data)
+        this.setState((prevState, props) => ({ data, errors }))
+    }
+
+    onCutSuffixChange = (index) => (e) => {
+        let data = Object.assign({}, this.state.data)
+        let cutSuffixes = Object.assign([], data.cutSuffixes)
+        data.cutSuffixes = cutSuffixes
+        cutSuffixes[index].checked = e.target.checked || false
+        let errors = this.validate(data)
+        this.setState((prevState, props) => ({ data, errors }))
+    }
+
+    validate = (data) => {
+        let errors = {}
+
+        const { code, category, description, cutSuffixes } = data
+
+        if (!code) {
+            errors.code = 'A Code is required.'
+        }
+        if (!category) {
+            errors.category = 'A Category is required.'
+        }
+        if (!description) {
+            errors.description = 'A Description is required.'
+        }
+        if (cutSuffixes) {
+            let checkedCutSuffix = cutSuffixes.find(cutSuffix => cutSuffix.checked === true)
+            if (!checkedCutSuffix) {
+                errors.cutSuffixes = 'At least one Cut Suffix is required.'
+            }
+        }
+
+        return errors
     }
 
     onSave = (e) => {
@@ -26,16 +65,16 @@ class CutCodeLoader extends Component {
 
     onClose = (e) => {
         const { history } = this.props
-        
+
         history.push(`/settings/cut-code`)
     }
 
     render() {
-        const { data } = this.state
+        const { data, errors } = this.state
         if (data === null) {
             return <div>loading</div>
         } else {
-            return <CutCode {...this.props} data={data} onSave={this.onSave} onChange={this.onChange} onClose={this.onClose} />
+            return <CutCode {...this.props} data={data} errors={errors} onSave={this.onSave} onChange={this.onChange} onClose={this.onClose} onCutSuffixChange={this.onCutSuffixChange} />
         }
     }
 }

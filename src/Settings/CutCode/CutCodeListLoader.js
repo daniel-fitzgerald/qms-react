@@ -5,6 +5,7 @@ import CutCodeList from './CutCodeList'
 class CutCodeListLoader extends Component {
     state = {
         data: null,
+        filter: { code: '', category: '', description: '' },
         messages: null
     }
 
@@ -17,12 +18,22 @@ class CutCodeListLoader extends Component {
         history.push(`/settings/cut-code/${id}`)
     }
 
+    onFilterChange = (id) => (e) => {
+        let filter = Object.assign({}, this.state.filter)
+        filter[id] = e.target.value
+        this.setState((prevState, props) => ({ filter }))
+    }
+
+    getFilteredData = (data, filter) => {
+        return data.filter(dataItem => dataItem.code.includes(filter.code) && dataItem.category.includes(filter.category) && dataItem.description.includes(filter.description))
+    }
+
     render() {
-        const { data } = this.state
+        const { data, filter } = this.state
         if (data === null) {
             return <div>loading</div>
         } else {
-            return <CutCodeList {...this.props} data={data} onEdit={this.onEdit} />
+            return <CutCodeList {...this.props} data={this.getFilteredData(data, filter)} filter={filter} onEdit={this.onEdit} onFilterChange={this.onFilterChange} />
         }
     }
 }

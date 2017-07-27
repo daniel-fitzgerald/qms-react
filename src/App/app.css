@@ -55,7 +55,7 @@ a {
 
 .static-data .label, .dynamic-data .label, .address-data .label {
   font-weight: bold;
-  min-width: 10em;
+  width: 10em;
   display: inline-block;
   vertical-align: top;
 }
@@ -80,7 +80,7 @@ input, textarea, select {
 
 .address-data .label  {
     margin: 2px 0;
-    min-width: 10em;
+    width: 10em;
     display: inline-block;
 }
 
@@ -208,3 +208,21 @@ fieldset {
 input, textarea, select, button {
     font-size: 16px;
 }
+
+.dynamic-data.has-error {
+    border-left: 4px solid #b7202d;
+    padding-left: 3px;
+    color: #b7202d;
+}
+
+.dynamic-data.has-error > label, .has-error .label {
+    width: calc(10em - 7px);
+}
+
+.dynamic-data__input {
+    display: inline-block;
+}
+
+ .field-error {
+     font-weight: bold;
+ }

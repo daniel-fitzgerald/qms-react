@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Content from '../../App/Content'
-import { Input, Textarea, Select, Checkbox } from '../../components/Input'
+import { StaticData, Input, Textarea, Select, Checkbox } from '../../components/Input'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -9,8 +9,6 @@ const breadcrumbs = {
     crumbs: [{ path: '/settings', label: 'Settings' }, { path: '/settings/exporter', label: 'Exporter List' }],
     currentLabel: 'Exporter'
 }
-
-let StaticData = ({ label, value }) => <div className="static-data"><span className="label">{label}</span><span>{value}</span></div>
 
 let Address = ({ id, label, data, onChangeAddress }) => <div className="address-data">
     <span className="label">{label}</span>
