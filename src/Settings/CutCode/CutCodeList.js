@@ -1,10 +1,11 @@
 import React from 'react'
 
 import Content from '../../App/Content'
-import { Input } from '../../components/Input'
-
+import { Input, Select } from '../../components/Input'
 import Expandable from '../../components/Expandable'
 import VirtualizedTable from '../../components/VirtualizedTable'
+import SelectListService from '../../services/SelectListService'
+import TextValueService from '../../services/TextValueService'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -13,27 +14,23 @@ const breadcrumbs = {
     currentLabel: 'Cut Code List'
 }
 
-const config = [
+let getConfig = (onEdit) => [
     { label: 'Cut Code', dataKey: 'code' },
-    { label: 'Category', dataKey: 'category' },
+    { label: 'Category', dataKey: 'category', cellRenderer: ({dataKey, rowData}) => TextValueService.getText('category', rowData.category) },
     { label: 'Description', dataKey: 'description' },
-    { label: 'Action', dataKey: 'action' },
+    { label: 'Action', dataKey: 'action', cellRenderer: ({dataKey, rowData}) => <a onClick={onEdit(rowData.id)}>Edit</a>}
 ]
-
-let mapData = (data, onEdit) => {
-    return data.map(element => Object.assign({}, element, { action: <a onClick={onEdit(element.id)}>Edit</a> }))
-}
 
 let CutCodeList = ({ data, filter, onFilterChange, location, onEdit, onClear }) => <Content title="Cut Code List" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
     <Expandable label="Filters">
         <Input id="code" label="Cut Code" data={filter} onChange={onFilterChange} />
-        <Input id="category" label="Category" data={filter} onChange={onFilterChange} />
+        <Select id="category" label="Category" data={filter} onChange={onFilterChange} options={SelectListService.getOptions('category')}/>
         <Input id="description" label="Cut Description" data={filter} onChange={onFilterChange} />
         <div className="filter-actions">
             <button type="button" onClick={onClear}>Clear</button>
         </div>
     </Expandable>
-    <VirtualizedTable data={mapData(data, onEdit)} config={config} noResultsMessage="No Cut Code matches the filters." />
+    <VirtualizedTable data={data} config={getConfig(onEdit)} noResultsMessage="No Cut Code matches the filters." />
 </Content>
 
 export default CutCodeList

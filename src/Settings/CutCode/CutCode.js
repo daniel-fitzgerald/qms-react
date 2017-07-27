@@ -1,7 +1,8 @@
 import React from 'react'
 
 import Content from '../../App/Content'
-import { Input, Textarea, Checkbox, StaticData, hasError } from '../../components/Input'
+import { Input, Select, Textarea, Checkbox, StaticData, hasError } from '../../components/Input'
+import SelectListService from '../../services/SelectListService'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -24,7 +25,7 @@ let CutSuffixes = ({ data, errors, onCutSuffixChange }) => <div className={`dyna
 
 let CutCode = ({ data, errors, location, match, onChange, onCutSuffixChange, onSave, onClose }) => <Content title="Cut Code" secondaryNav={SecondaryNav} location={location} breadcrumbs={getBreadcrumbs(match)}>
     <Input id="code" label="Code" data={data} onChange={onChange} errors={errors} />
-    <Input id="category" label="Category" data={data} onChange={onChange} errors={errors} />
+    <Select id="category" label="Category" data={data} onChange={onChange} errors={errors} options={SelectListService.getOptions('category')}/>
     <Textarea id="description" label="Description" data={data} onChange={onChange} errors={errors} />
     <Checkbox id="certificateApplications" label="Enable for Certificate Applications on QMS" data={data} onChange={onChange} />
 

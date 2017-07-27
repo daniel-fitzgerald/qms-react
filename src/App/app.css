@@ -192,11 +192,11 @@ input[type="checkbox"] {
 }
 
 .page-actions {
-    text-align: right;
+    margin-left: 10em;
 }
 
 .page-actions button {
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 fieldset {
@@ -244,4 +244,13 @@ input, textarea, select, button {
     background-color: #857d6f;
     color: #ffffff;
     cursor: pointer;
+}
+
+.dynamic-data.checkbox {
+    margin-left: 10em;
+}
+
+.dynamic-data.checkbox label {
+    width: auto;
+    font-weight: normal;
 }

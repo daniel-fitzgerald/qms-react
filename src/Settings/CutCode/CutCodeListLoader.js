@@ -25,7 +25,7 @@ class CutCodeListLoader extends Component {
     }
 
     getFilteredData = (data, filter) => {
-        return data.filter(dataItem => dataItem.code.includes(filter.code) && dataItem.category.includes(filter.category) && dataItem.description.includes(filter.description))
+        return data.filter(dataItem => dataItem.code.includes(filter.code) && (!filter.category || dataItem.category === filter.category) && dataItem.description.includes(filter.description))
     }
 
     onClear = (e) => {

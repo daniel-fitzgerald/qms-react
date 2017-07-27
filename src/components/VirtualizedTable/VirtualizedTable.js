@@ -30,7 +30,7 @@ class VirtualizedTable extends Component {
                             scrollTop={scrollTop}
                             rowGetter={({ index }) => data[index]}
                         >
-                            {config.map(({label, dataKey}, index) => <Column key={index} label={label} dataKey={dataKey} width={200} flexGrow={1} cellRenderer={this.cellRenderer} />)}
+                            {config.map(({label, dataKey, cellRenderer}, index) => <Column key={index} label={label} dataKey={dataKey} width={200} flexGrow={1} cellRenderer={cellRenderer} />)}
                             
                         </Table>
                     )}

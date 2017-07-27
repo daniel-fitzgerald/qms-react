@@ -10,9 +10,9 @@ let Input = ({ id, label, data, errors, onChange }) => <div className={`dynamic-
     </div>
 </div>
 
-let Checkbox = ({ id, label, data, errors, onChange }) => <div className="dynamic-data">
-    <label className="label" htmlFor={id}>{label}</label>
+let Checkbox = ({ id, label, data, errors, onChange }) => <div className="dynamic-data checkbox">
     <input id={id} checked={data[id]} type="checkbox" onChange={onChange(id)} />
+    <label className="label" htmlFor={id}>{label}</label>
 </div>
 
 let Textarea = ({ id, label, data, errors, onChange }) => <div className={`dynamic-data${hasError(id, errors)}`}>

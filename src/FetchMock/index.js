@@ -3,7 +3,7 @@ import fetchMock from 'fetch-mock'
 fetchMock.get(/\.\/api\/settings\/cut-code\/.+/, {
     id: 1,
     code: '0536',
-    category: 'something',
+    category: 'CM',
     description: 'some description',
     certificateApplications: true,
     cutSuffixes: [
@@ -33,7 +33,7 @@ let getCutCodes = () => {
         result.push({
             id: i,
             code: '0'+i,
-            category: 'something',
+            category: 'CM',
             description: 'some description'
         })
     }
