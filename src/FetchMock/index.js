@@ -29,7 +29,7 @@ fetchMock.get(/\.\/api\/settings\/cut-code\/.+/, {
 
 let getCutCodes = () => {
     let result = []
-    for (let i = 0; i < 3000; i++) {
+    for (let i = 0; i < 4000; i++) {
         result.push({
             id: i,
             code: '0'+i,

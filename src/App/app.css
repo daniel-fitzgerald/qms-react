@@ -226,3 +226,7 @@ input, textarea, select, button {
  .field-error {
      font-weight: bold;
  }
+
+ .filter-actions {
+     margin-left: 10em;
+ }

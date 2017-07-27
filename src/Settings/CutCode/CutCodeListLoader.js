@@ -28,12 +28,17 @@ class CutCodeListLoader extends Component {
         return data.filter(dataItem => dataItem.code.includes(filter.code) && dataItem.category.includes(filter.category) && dataItem.description.includes(filter.description))
     }
 
+    onClear = (e) => {
+        let filter = { code: '', category: '', description: '' }
+        this.setState((prevState, props) => ({ filter }))
+    }
+
     render() {
         const { data, filter } = this.state
         if (data === null) {
             return <div>loading</div>
         } else {
-            return <CutCodeList {...this.props} data={this.getFilteredData(data, filter)} filter={filter} onEdit={this.onEdit} onFilterChange={this.onFilterChange} />
+            return <CutCodeList {...this.props} data={this.getFilteredData(data, filter)} filter={filter} onEdit={this.onEdit} onFilterChange={this.onFilterChange} onClear={this.onClear} />
         }
     }
 }

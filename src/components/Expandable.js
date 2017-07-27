@@ -4,14 +4,14 @@ import './expandable.css'
 
 class Expandable extends Component {
     state = {
-        expanded: false
+        expanded: true
     }
 
     handleClick = () => {
         const { expanded } = this.state
 
         this.setState((prevState, props) => ({
-            expanded: !expanded
+            expanded: expanded
         }))
     }
 

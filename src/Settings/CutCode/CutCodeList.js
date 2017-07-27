@@ -21,16 +21,19 @@ const config = [
 ]
 
 let mapData = (data, onEdit) => {
-    return data.map(element => Object.assign({}, element, {action: <a onClick={onEdit(element.id)}>Edit</a>}))
+    return data.map(element => Object.assign({}, element, { action: <a onClick={onEdit(element.id)}>Edit</a> }))
 }
 
-let CutCodeList = ({ data, filter, onFilterChange, location, onEdit }) => <Content title="Cut Code List" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
+let CutCodeList = ({ data, filter, onFilterChange, location, onEdit, onClear }) => <Content title="Cut Code List" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
     <Expandable label="Filters">
         <Input id="code" label="Cut Code" data={filter} onChange={onFilterChange} />
         <Input id="category" label="Category" data={filter} onChange={onFilterChange} />
         <Input id="description" label="Cut Description" data={filter} onChange={onFilterChange} />
+        <div className="filter-actions">
+            <button type="button" onClick={onClear}>Clear</button>
+        </div>
     </Expandable>
-    <VirtualizedTable data={mapData(data, onEdit)} config={config} />
+    <VirtualizedTable data={mapData(data, onEdit)} config={config} noResultsMessage="No Cut Code matches the filters." />
 </Content>
 
 export default CutCodeList

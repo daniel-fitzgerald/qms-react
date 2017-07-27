@@ -12,9 +12,9 @@ class VirtualizedTable extends Component {
     cellRenderer = ({ dataKey, rowData }) => <span>{rowData[dataKey]}</span>
 
     render() {
-        const { data, config } = this.props
+        const { data, config, noResultsMessage } = this.props
 
-        return <WindowScroller>
+        return data.length > 0 ? <WindowScroller>
             {({ height, isScrolling, onChildScroll, scrollTop }) => (
                 <AutoSizer disableHeight>
                     {({ width }) => (
@@ -36,7 +36,7 @@ class VirtualizedTable extends Component {
                     )}
                 </AutoSizer>
             )}
-        </WindowScroller>
+        </WindowScroller> : <span>{noResultsMessage}</span>
     }
 }
 
