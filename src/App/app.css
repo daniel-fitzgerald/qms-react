@@ -230,3 +230,19 @@ input, textarea, select, button {
  .filter-actions {
      margin-left: 10em;
  }
+
+ button {
+     background-color: #d5d2ca;
+    color: #000000;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    min-width: 6em;
+    margin-left: 10px;
+ }
+
+ button:hover {
+    background-color: #857d6f;
+    color: #ffffff;
+    cursor: pointer;
+}
