@@ -10,7 +10,7 @@ import './app.css'
 
 let AppLayout = (props) => <Layout appRoutes={<AppRoutes />} navigationItems={NavigationItems} {...props} />
 
-let App = () => <Router>
+let App = () => <Router basename="/qms-ui-test-rest">
   <Route path="/" component={AppLayout} />
 </Router>
 

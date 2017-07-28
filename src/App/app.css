@@ -72,6 +72,11 @@ a {
 
 input, textarea, select {
   width: 15em;
+  font-family: Calibri, arial, sans-serif;
+}
+
+button {
+    font-family: Calibri, arial, sans-serif;
 }
 
 .static-data {
