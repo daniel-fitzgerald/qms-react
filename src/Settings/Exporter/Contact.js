@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Content from '../../App/Content'
-import {Input } from '../../components/Input'
+import Content from 'components/Content'
+import {Input } from 'components/Input'
 
 import SecondaryNav from '../SecondaryNav'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Content from '../App/Content'
+import Content from 'components/Content'
 
 import SecondaryNav from './SecondaryNav'
 

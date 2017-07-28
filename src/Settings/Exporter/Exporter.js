@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Content from '../../App/Content'
-import { StaticData, Input, Textarea, Select, Checkbox } from '../../components/Input'
+import Content from 'components/Content'
+import { StaticData, Input, Textarea, Select, Checkbox } from 'components/Input'
 
 import SecondaryNav from '../SecondaryNav'
 

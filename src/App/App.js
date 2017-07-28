@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Layout from './Layout'
+import Layout from 'components/Layout'
 import { AppRoutes, NavigationItems } from './AppNavigation'
 
 import 'react-virtualized/styles.css'

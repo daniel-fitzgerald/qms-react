@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import RestApiService from 'services/RestApiService'
+
 import CutCodeList from './CutCodeList'
 
 class CutCodeListLoader extends Component {
@@ -10,7 +12,9 @@ class CutCodeListLoader extends Component {
     }
 
     componentDidMount() {
-        fetch('./api/settings/cut-code').then(response => response.json()).then(data => this.setState((prevState, props) => ({ data: data })))
+        RestApiService.get('./api/settings/cut-code')
+            .then(data => this.setState((prevState, props) => ({ data })))
+            .catch(messages => this.setState((prevState, props) => ({ messages })))
     }
 
     onEdit = (id) => () => {
@@ -24,7 +28,8 @@ class CutCodeListLoader extends Component {
         this.setState((prevState, props) => ({ filter }))
     }
 
-    getFilteredData = (data, filter) => {
+    getFilteredData = () => {
+        const { data, filter } = this.state
         return data.filter(dataItem => dataItem.code.includes(filter.code) && (!filter.category || dataItem.category === filter.category) && dataItem.description.includes(filter.description))
     }
 
@@ -34,11 +39,11 @@ class CutCodeListLoader extends Component {
     }
 
     render() {
-        const { data, filter } = this.state
+        const { data, ...state } = this.state
         if (data === null) {
             return <div>loading</div>
         } else {
-            return <CutCodeList {...this.props} data={this.getFilteredData(data, filter)} filter={filter} onEdit={this.onEdit} onFilterChange={this.onFilterChange} onClear={this.onClear} />
+            return <CutCodeList {...this.props} {...state} data={this.getFilteredData()} onEdit={this.onEdit} onFilterChange={this.onFilterChange} onClear={this.onClear} />
         }
     }
 }

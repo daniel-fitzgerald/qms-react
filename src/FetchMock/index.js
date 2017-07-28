@@ -1,5 +1,39 @@
 import fetchMock from 'fetch-mock'
 
+fetchMock.put(/\.\/api\/settings\/cut-code/, {
+    status: 400,
+    body: [
+        'you errored',
+        'you errored again!'
+    ]
+})
+// fetchMock.put(/\.\/api\/settings\/cut-code/, {
+//     id: 1,
+//     code: '0536',
+//     category: 'CM',
+//     description: 'some description',
+//     certificateApplications: true,
+//     cutSuffixes: [
+//         { label: 'A: description', checked: true },
+//         { label: 'B: other description', checked: true },
+//         { label: 'C: another description', checked: false },
+//         { label: 'D: some description 1', checked: false },
+//         { label: 'E: some description 2', checked: false },
+//         { label: 'F: some description 3', checked: false },
+//         { label: 'G: some description 4', checked: false },
+//         { label: 'H: some description 5', checked: false },
+//         { label: 'I: some description 6', checked: false },
+//         { label: 'J: some description 7', checked: false },
+//         { label: 'K: some description 8', checked: false },
+//         { label: 'L: some description 9', checked: false },
+//         { label: 'M: some description 10', checked: false },
+//     ],
+//     createdBy: 'someone',
+//     dateCreated: '12/12/2012 13:56',
+//     modifiedBy: 'someone else',
+//     dateModified: '14/12/2015 19:12',
+// })
+
 fetchMock.get(/\.\/api\/settings\/cut-code\/.+/, {
     id: 1,
     code: '0536',
@@ -32,7 +66,7 @@ let getCutCodes = () => {
     for (let i = 0; i < 4000; i++) {
         result.push({
             id: i,
-            code: '0'+i,
+            code: '0' + i,
             category: 'CM',
             description: 'some description'
         })

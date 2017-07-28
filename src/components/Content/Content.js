@@ -48,7 +48,30 @@ let Breadcrumbs = ({ breadcrumbs }) => {
     }
 }
 
-let Content = ({ title, children, secondaryNav, location, breadcrumbs }) => {
+let MessageType = ({ type, messages }) => {
+    if (messages.length > 0) {
+        return <div className={type}>
+            {messages.map((message, index) => <p key={index}>{message.text}</p>)}
+        </div>
+    } else {
+        return null
+    }
+}
+
+let Messages = ({ messages }) => {
+    if (messages) {
+        return <div className="messages">
+            <MessageType type="error" messages={messages.filter(message => message.type === 'error')} />
+            <MessageType type="warning" messages={messages.filter(message => message.type === 'warning')} />
+            <MessageType type="info" messages={messages.filter(message => message.type === 'info')} />
+            <MessageType type="success" messages={messages.filter(message => message.type === 'success')} />
+        </div>
+    } else {
+        return null
+    }
+}
+
+let Content = ({ title, messages, children, secondaryNav, location, breadcrumbs }) => {
     document.title = title + ' - Quota Management System'
     return <div>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
@@ -56,6 +79,7 @@ let Content = ({ title, children, secondaryNav, location, breadcrumbs }) => {
             <SecondaryNav secondaryNav={secondaryNav} location={location} />
             <div className="page-content full-width">
                 <h1>{title}</h1>
+                <Messages messages={messages} />
                 <div>
                     {children}
                 </div>

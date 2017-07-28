@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import RestApiService from 'services/RestApiService'
+import ValidationService from 'services/ValidationService'
+
 import CutCode from './CutCode'
 
 class CutCodeLoader extends Component {
@@ -11,7 +14,9 @@ class CutCodeLoader extends Component {
 
     componentDidMount() {
         const { match: { params: { id } } } = this.props
-        fetch(`./api/settings/cut-code/${id}`).then(response => response.json()).then(data => this.setState((prevState, props) => ({ data })))
+        RestApiService.get(`./api/settings/cut-code/${id}`)
+            .then(data => this.setState((prevState, props) => ({ data })))
+            .catch(messages => this.setState((prevState, props) => ({ messages })))
     }
 
     onChange = (id) => (e) => {
@@ -58,9 +63,22 @@ class CutCodeLoader extends Component {
         return errors
     }
 
-    onSave = (e) => {
+    onSubmit = (e) => {
         e.preventDefault()
-        console.log('save')
+
+        const { data } = this.state
+        let error = this.validate(data)
+        if (ValidationService.hasError(error)) {
+            this.setState({ error })
+            return
+        }
+
+        RestApiService.put('./api/settings/cut-code', data)
+            .then(data => {
+                const messages = [{ type: 'success', text: 'Saved Cut Code.' }]
+                this.setState((prevState, props) => ({ data, messages }))
+            })
+            .catch(messages => this.setState((prevState, props) => ({ messages })))
     }
 
     onClose = (e) => {
@@ -70,11 +88,11 @@ class CutCodeLoader extends Component {
     }
 
     render() {
-        const { data, errors } = this.state
+        const { data } = this.state
         if (data === null) {
             return <div>loading</div>
         } else {
-            return <CutCode {...this.props} data={data} errors={errors} onSave={this.onSave} onChange={this.onChange} onClose={this.onClose} onCutSuffixChange={this.onCutSuffixChange} />
+            return <CutCode {...this.props} {...this.state} onSubmit={this.onSubmit} onChange={this.onChange} onClose={this.onClose} onCutSuffixChange={this.onCutSuffixChange} />
         }
     }
 }

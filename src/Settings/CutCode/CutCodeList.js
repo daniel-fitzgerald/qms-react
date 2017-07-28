@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Content from '../../App/Content'
-import { Input, Select } from '../../components/Input'
-import Expandable from '../../components/Expandable'
-import VirtualizedTable from '../../components/VirtualizedTable'
-import SelectListService from '../../services/SelectListService'
-import TextValueService from '../../services/TextValueService'
+import Content from 'components/Content'
+import { Input, Select } from 'components/Input'
+import Expandable from 'components/Expandable'
+import VirtualizedTable from 'components/VirtualizedTable'
+import SelectListService from 'services/SelectListService'
+import TextValueService from 'services/TextValueService'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -21,7 +21,7 @@ let getConfig = (onEdit) => [
     { label: 'Action', dataKey: 'action', cellRenderer: ({dataKey, rowData}) => <a onClick={onEdit(rowData.id)}>Edit</a>}
 ]
 
-let CutCodeList = ({ data, filter, onFilterChange, location, onEdit, onClear }) => <Content title="Cut Code List" secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
+let CutCodeList = ({ data, messages, filter, onFilterChange, location, onEdit, onClear }) => <Content title="Cut Code List" messages={messages} secondaryNav={SecondaryNav} location={location} breadcrumbs={breadcrumbs}>
     <Expandable label="Filters">
         <Input id="code" label="Cut Code" data={filter} onChange={onFilterChange} />
         <Select id="category" label="Category" data={filter} onChange={onFilterChange} options={SelectListService.getOptions('category')}/>

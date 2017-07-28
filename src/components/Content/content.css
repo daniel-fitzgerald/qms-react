@@ -226,3 +226,46 @@
     content: '';
     }
 }
+
+.messages > div {
+    color: #313131;
+    line-height: 1.6;
+    position: relative;
+    margin: 1.6em 0;
+    padding: 1.2em .8em;
+    border: 2px solid #00bfe9;
+    border-left: 48px solid #00bfe9;
+}
+
+.messages > div:after {
+    content: " ";
+    position: absolute;
+    display: block;
+    left: -36px;
+    top: 50%;
+    margin-top: -12px;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Ccircle fill='%23313131' cx='64' cy='64' r='64'/%3E%3Crect fill='%23fff' width='16' height='16' x='56' y='20' rx='2'/%3E%3Crect fill='%23fff' width='16' height='56' x='56' y='44' rx='2'/%3E%3Crect fill='%23fff' width='40' height='16' x='44' y='84' rx='2'/%3E%3Crect fill='%23fff' width='28' height='16' x='44' y='44' rx='2'/%3E%3C/svg%3E");
+}
+
+.messages .error {
+    border-color: #ff635c;
+}
+
+.messages .error:after {
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><path fill='%23313131' d='M71.99 12.78l54.796 99.458c1.665 2.997 1.617 7.993-.143 10.99a8.959 8.959 0 0 1-3.317 3.282 8.93 8.93 0 0 1-4.53 1.213H9.206a8.93 8.93 0 0 1-4.533-1.213 8.966 8.966 0 0 1-3.317-3.282c-1.76-2.997-1.808-7.993-.143-10.99L56.01 12.78a9.105 9.105 0 0 1 3.352-3.496C60.79 8.428 62.335 8 64 8s3.21.428 4.638 1.284a9.115 9.115 0 0 1 3.353 3.496z'/><rect fill='%23fff' width='16' height='16' x='56' y='96' rx='2'/><path fill='%23fff' d='M52.167 42c-.092-1.104.73-2 1.838-2h19.99c1.107 0 1.93.895 1.838 2l-3.666 44c-.092 1.104-1.062 2-2.16 2H57.993c-1.1 0-2.07-.895-2.16-2l-3.667-44z'/></svg>");
+}
+
+.messages .success {
+    border-color: #3dbd93;
+}
+
+.messages .success:after {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Ccircle fill='%23313131' cx='64' cy='64' r='64'/%3E%3Cpath fill='%23fff' d='M102.59 45.41a1.992 1.992 0 0 0-.002-2.822l-9.176-9.176a2.003 2.003 0 0 0-2.823 0L56 68 41.42 53.42a1.999 1.999 0 0 0-2.832-.008l-9.176 9.176a2 2 0 0 0-.004 2.82l25.184 25.184c.778.778 2.04.775 2.82-.003l45.177-45.18z'/%3E%3C/svg%3E")
+}
+
+.messages p {
+    margin: 0;
+}
