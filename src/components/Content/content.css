@@ -269,3 +269,7 @@
 .messages p {
     margin: 0;
 }
+
+.messages ul {
+    margin: 0;
+}

@@ -68,15 +68,16 @@ class CutCodeLoader extends Component {
         e.preventDefault()
 
         const { data } = this.state
-        let error = this.validate(data)
-        if (ValidationService.hasError(error)) {
-            this.setState({ error })
+        let errors = this.validate(data)
+        if (ValidationService.hasError(errors)) {
+            let messages = ValidationService.getErrorMessages(errors, 'saved', 'Cut Code')
+            this.setState({ errors, messages })
             return
         }
 
         RestApiService.put('./api/settings/cut-code', data)
             .then(data => {
-                const messages = ValidationService.getSuccessMessages('saved', 'Cut Code')
+                const messages = ValidationService.getSuccessMessage('saved', 'Cut Code')
                 this.setState((prevState, props) => ({ data, messages }))
             })
             .catch(messages => this.setState((prevState, props) => ({ messages })))
@@ -85,7 +86,7 @@ class CutCodeLoader extends Component {
     onClose = (e) => {
         const { history } = this.props
 
-        history.push(`/settings/cut-code`)
+        history.push('/settings/cut-code')
     }
 
     render() {

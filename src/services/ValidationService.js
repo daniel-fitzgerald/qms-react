@@ -1,3 +1,4 @@
+import React from 'react'
 //var moment = require('moment')
 
 let checkFieldMissing = (value) => value === null || value === undefined || value === ""
@@ -50,7 +51,7 @@ let getFieldMessage = (code, ...params) => {
 const successMessages = {
     'saved': (thing) => `Saved ${thing}.`
 }
-let getSuccessMessages = (code, ...params) => {
+let getSuccessMessage = (code, ...params) => {
     const result = successMessages[code]
     if (result) {
         return [{ type: 'success', text: result(...params) }]
@@ -59,4 +60,30 @@ let getSuccessMessages = (code, ...params) => {
     }
 }
 
-export default { checkFieldMissing, hasError, hasValue, checkFieldIsNumber, getFieldMessage, getSuccessMessages } //checkDateInvalid, checkEndDateAfterStartDate
+let focus = (id) => () => {
+    let element = document.getElementById(id)
+    if (element) {
+        element.scrollIntoView()
+        element.focus()
+    }
+}
+
+const errorMessages = {
+    'saved': (errors, thing) => <span>
+        <span>You can not save the {thing} until the following errors have been resolved.</span>
+        <ul>
+            {Object.keys(errors).map((key, index) => <li key={index}><a onClick={focus(key)}>{errors[key]}</a></li>)}
+        </ul>
+    </span>
+}
+let getErrorMessages = (errors, code, ...params) => {
+    const result = errorMessages[code]
+    if (result) {
+        return [{ type: 'error', text: result(errors, ...params) }]
+    } else {
+        return [{ type: 'error', text: `Unknown message: ${code}${params.length > 0 ? `, [${params}]` : ''}` }]
+    }
+}
+
+
+export default { checkFieldMissing, hasError, hasValue, checkFieldIsNumber, getFieldMessage, getSuccessMessage, getErrorMessages } //checkDateInvalid, checkEndDateAfterStartDate

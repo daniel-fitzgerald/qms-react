@@ -51,7 +51,7 @@ let Breadcrumbs = ({ breadcrumbs }) => {
 let MessageType = ({ type, messages }) => {
     if (messages.length > 0) {
         return <div className={type}>
-            {messages.map((message, index) => <p key={index}>{message.text}</p>)}
+            {messages.map((message, index) => <span key={index}>{message.text}</span>)}
         </div>
     } else {
         return null

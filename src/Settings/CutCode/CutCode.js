@@ -15,7 +15,7 @@ let getBreadcrumbs = (match) => {
 
 let CutSuffixCheckbox = ({ index, label, checked, onCutSuffixChange }) => <div><label><input type="checkbox" checked={checked} onChange={onCutSuffixChange(index)} /> {label}</label></div>
 
-let CutSuffixes = ({ data, errors, onCutSuffixChange }) => <div className={`dynamic-data${hasError('cutSuffixes', errors)}`}>
+let CutSuffixes = ({ data, errors, onCutSuffixChange }) => <div id="cutSuffixes" className={`dynamic-data${hasError('cutSuffixes', errors)}`}>
     <span className="label">Cut Suffix</span>
     <div style={{ display: 'inline-block' }}>
         {data.cutSuffixes.map((cutSuffix, index) => <CutSuffixCheckbox key={index} index={index} {...cutSuffix} onCutSuffixChange={onCutSuffixChange} />)}

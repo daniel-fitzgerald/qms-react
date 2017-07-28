@@ -14,8 +14,12 @@ function handleResponse(response) {
 }
 
 function get(url) {
-    return fetch(url, { credentials: 'same-origin', headers: { 'Accept': 'application/json' } })
-        .then(handleResponse)
+    return fetch(url, {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(handleResponse)
 }
 
 function put(url, data) {
