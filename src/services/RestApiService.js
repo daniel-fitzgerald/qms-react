@@ -6,7 +6,7 @@ function handleResponse(response) {
             throw messages
         })
     } else if (response.status === 500) {
-        const messages = { type: 'error', text: 'Server error.' }
+        const messages = [{ type: 'error', text: 'Server error.' }]
         throw messages
     } else {
         return response.json()

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import RestApiService from 'services/RestApiService'
 import ValidationService from 'services/ValidationService'
+import Loading from 'components/Loading'
 
 import CutCode from './CutCode'
 
@@ -44,19 +45,19 @@ class CutCodeLoader extends Component {
 
         const { code, category, description, cutSuffixes } = data
 
-        if (!code) {
-            errors.code = 'A Code is required.'
+        if (ValidationService.checkFieldMissing(code)) {
+            errors.code = ValidationService.getFieldMessage('required', 'Code')
         }
-        if (!category) {
-            errors.category = 'A Category is required.'
+        if (ValidationService.checkFieldMissing(category)) {
+            errors.category = ValidationService.getFieldMessage('required', 'Category')
         }
-        if (!description) {
-            errors.description = 'A Description is required.'
+        if (ValidationService.checkFieldMissing(description)) {
+            errors.description = ValidationService.getFieldMessage('required', 'Description')
         }
-        if (cutSuffixes) {
+        if (ValidationService.hasValue(cutSuffixes)) {
             let checkedCutSuffix = cutSuffixes.find(cutSuffix => cutSuffix.checked === true)
-            if (!checkedCutSuffix) {
-                errors.cutSuffixes = 'At least one Cut Suffix is required.'
+            if (ValidationService.checkFieldMissing(checkedCutSuffix)) {
+                errors.cutSuffixes = ValidationService.getFieldMessage('atLeastOneRequired', 'Cut Suffix')
             }
         }
 
@@ -75,7 +76,7 @@ class CutCodeLoader extends Component {
 
         RestApiService.put('./api/settings/cut-code', data)
             .then(data => {
-                const messages = [{ type: 'success', text: 'Saved Cut Code.' }]
+                const messages = ValidationService.getSuccessMessages('saved', 'Cut Code')
                 this.setState((prevState, props) => ({ data, messages }))
             })
             .catch(messages => this.setState((prevState, props) => ({ messages })))
@@ -90,7 +91,7 @@ class CutCodeLoader extends Component {
     render() {
         const { data } = this.state
         if (data === null) {
-            return <div>loading</div>
+            return <Loading {...this.state}></Loading>
         } else {
             return <CutCode {...this.props} {...this.state} onSubmit={this.onSubmit} onChange={this.onChange} onClose={this.onClose} onCutSuffixChange={this.onCutSuffixChange} />
         }

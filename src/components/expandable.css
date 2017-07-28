@@ -27,11 +27,8 @@
 }
 
 .collapsefaq-content {
-    /* margin: 0 1em; */
-    /* padding: 5px; */
     padding: 15px;
     width: 100%;
-    /* border: 1px solid #c1c1c1; */
     border-left: 1px solid #c1c1c1;
     border-right: 1px solid #c1c1c1;
     border-bottom: 1px solid #c1c1c1;
@@ -42,7 +39,6 @@
 }
 
 .collapsefaq h3.trigger.expanded a {
-    /* color: #002f63; */
     color: #000000;
     background-color: #D2D2D2;
     font-weight: bold;
@@ -54,14 +50,13 @@
 }
 
 .collapsefaq h3.trigger.expanded a {
-    /* color: #002f63; */
     color: #000000;
     background-color: #D2D2D2;
     font-weight: bold;
 }
 
 .collapsefaq h3.trigger.expanded a:after {
-    content: '\2193';
+    /* content: '\2193'; */
     display: inline-block;
     margin-right: 5px;
     position: absolute;
@@ -77,7 +72,7 @@
 }
 
 .collapsefaq h3.trigger a:after {
-    content: '\2193';
+    /* content: '\2193'; */
     display: inline-block;
     margin-right: 5px;
     position: absolute;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import RestApiService from 'services/RestApiService'
+import Loading from 'components/Loading'
 
 import CutCodeList from './CutCodeList'
 
@@ -41,7 +42,7 @@ class CutCodeListLoader extends Component {
     render() {
         const { data, ...state } = this.state
         if (data === null) {
-            return <div>loading</div>
+            return <Loading {...this.state}></Loading>
         } else {
             return <CutCodeList {...this.props} {...state} data={this.getFilteredData()} onEdit={this.onEdit} onFilterChange={this.onFilterChange} onClear={this.onClear} />
         }
