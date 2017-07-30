@@ -70,7 +70,7 @@ class CutCodeLoader extends Component {
         const { data } = this.state
         let errors = this.validate(data)
         if (ValidationService.hasError(errors)) {
-            let messages = ValidationService.getErrorMessages(errors, 'saved', 'Cut Code')
+            let messages = ValidationService.getActionErrorMessages(errors, 'saved', 'Cut Code')
             this.setState({ errors, messages })
             return
         }

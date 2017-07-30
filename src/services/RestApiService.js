@@ -1,8 +1,10 @@
+import ValidationService from 'services/ValidationService'
+
 function handleResponse(response) {
     window.scroll(0, 0)
     if (response.status === 400) {
         return response.json().then(errors => {
-            const messages = errors.map(text => ({ type: 'error', text }))
+            const messages = ValidationService.getApiErrorMessages(errors)//errors.map(text => ({ type: 'error', text }))
             throw messages
         })
     } else if (response.status === 500) {

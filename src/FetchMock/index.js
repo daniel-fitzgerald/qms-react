@@ -1,12 +1,12 @@
 import fetchMock from 'fetch-mock'
 
-// fetchMock.put(/\.\/api\/settings\/cut-code/, {
-//     status: 400,
-//     body: [
-//         'you errored',
-//         'you errored again!'
-//     ]
-// })
+fetchMock.put(/\.\/api\/settings\/cut-code/, {
+    status: 400,
+    body: [
+        'you errored',
+        'you errored again!'
+    ]
+})
 fetchMock.put(/\.\/api\/settings\/cut-code/, {
     id: 1,
     code: '0536',

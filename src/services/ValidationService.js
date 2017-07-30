@@ -68,7 +68,7 @@ let focus = (id) => () => {
     }
 }
 
-const errorMessages = {
+const actionErrorMessages = {
     'saved': (errors, thing) => <span>
         <span>You can not save the {thing} until the following errors have been resolved.</span>
         <ul>
@@ -76,8 +76,8 @@ const errorMessages = {
         </ul>
     </span>
 }
-let getErrorMessages = (errors, code, ...params) => {
-    const result = errorMessages[code]
+let getActionErrorMessages = (errors, code, ...params) => {
+    const result = actionErrorMessages[code]
     if (result) {
         return [{ type: 'error', text: result(errors, ...params) }]
     } else {
@@ -85,5 +85,15 @@ let getErrorMessages = (errors, code, ...params) => {
     }
 }
 
+const apiErrorMessages = (errors) => <span>
+    <span>{`The following ${errors.length > 1 ? 'errors have' : 'error has'} occurred.`}</span>
+    <ul>
+        {errors.map((error, index) => <li key={index}>{error}</li>)}
+    </ul>
+</span>
 
-export default { checkFieldMissing, hasError, hasValue, checkFieldIsNumber, getFieldMessage, getSuccessMessage, getErrorMessages } //checkDateInvalid, checkEndDateAfterStartDate
+let getApiErrorMessages = (errors, code, ...params) => {
+    return [{ type: 'error', text: apiErrorMessages(errors) }]
+}
+
+export default { checkFieldMissing, hasError, hasValue, checkFieldIsNumber, getFieldMessage, getSuccessMessage, getActionErrorMessages, getApiErrorMessages } //checkDateInvalid, checkEndDateAfterStartDate
