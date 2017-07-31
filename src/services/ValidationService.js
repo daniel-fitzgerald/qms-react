@@ -78,6 +78,7 @@ const actionErrorMessages = {
 }
 let getActionErrorMessages = (errors, code, ...params) => {
     const result = actionErrorMessages[code]
+    window.scroll(0, 0)
     if (result) {
         return [{ type: 'error', text: result(errors, ...params) }]
     } else {

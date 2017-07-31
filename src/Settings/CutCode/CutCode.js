@@ -1,8 +1,7 @@
 import React from 'react'
 
 import Content from 'components/Content'
-import { Input, Select, Textarea, Checkbox, StaticData, hasError } from 'components/Input'
-import SelectListService from 'services/SelectListService'
+import { Input, Select, Textarea, Checkbox, StaticData, CheckboxList } from 'components/Input'
 
 import SecondaryNav from '../SecondaryNav'
 
@@ -13,24 +12,14 @@ let getBreadcrumbs = (match) => {
     }
 }
 
-let CutSuffixCheckbox = ({ index, label, checked, onCutSuffixChange }) => <div><label><input type="checkbox" checked={checked} onChange={onCutSuffixChange(index)} /> {label}</label></div>
-
-let CutSuffixes = ({ data, errors, onCutSuffixChange }) => <div id="cutSuffixes" className={`dynamic-data${hasError('cutSuffixes', errors)}`}>
-    <span className="label">Cut Suffix</span>
-    <div style={{ display: 'inline-block' }}>
-        {data.cutSuffixes.map((cutSuffix, index) => <CutSuffixCheckbox key={index} index={index} {...cutSuffix} onCutSuffixChange={onCutSuffixChange} />)}
-        <div className="field-error">{errors['cutSuffixes']}</div>
-    </div>
-</div>
-
-let CutCode = ({ data, messages, errors, location, match, onChange, onCutSuffixChange, onSubmit, onClose }) => <Content title="Cut Code" messages={messages} secondaryNav={SecondaryNav} location={location} breadcrumbs={getBreadcrumbs(match)}>
+let CutCode = ({ data, messages, errors, cutSuffix, category, location, match, onChange, onSubmit, onClose }) => <Content title="Cut Code" messages={messages} secondaryNav={SecondaryNav} location={location} breadcrumbs={getBreadcrumbs(match)}>
     <form onSubmit={onSubmit}>
         <Input id="code" label="Code" data={data} onChange={onChange} errors={errors} />
-        <Select id="category" label="Category" data={data} onChange={onChange} errors={errors} options={SelectListService.getOptions('category')} />
+        <Select id="category" label="Category" data={data} onChange={onChange} errors={errors} options={category} />
         <Textarea id="description" label="Description" data={data} onChange={onChange} errors={errors} />
         <Checkbox id="certificateApplications" label="Enable for Certificate Applications on QMS" data={data} onChange={onChange} />
 
-        <CutSuffixes data={data} errors={errors} onCutSuffixChange={onCutSuffixChange} />
+        <CheckboxList id="cutSuffixes" label="Cut Suffix" data={data} errors={errors} onChange={onChange} options={cutSuffix} />
 
         <StaticData label="Created By" value={data.createdBy} />
         <StaticData label="Date Created" value={data.dateCreated} />

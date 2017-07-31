@@ -1,33 +1,92 @@
 import fetchMock from 'fetch-mock'
 
-fetchMock.put(/\.\/api\/settings\/cut-code/, {
-    status: 400,
-    body: [
-        'you errored',
-        'you errored again!'
-    ]
-})
+fetchMock.get(/\.\/api\/ref\/cut-suffix/, {
+    options: [
+        { label: 'A: some label', value: 'A' },
+        { label: 'B: some label', value: 'B' },
+        { label: 'D: some label', value: 'D' },
+        { label: 'E: some label', value: 'E' },
+        { label: 'F: some label', value: 'F' },
+        { label: 'G: some label', value: 'G' },
+        { label: 'H: some label', value: 'H' },
+        { label: 'I: some label', value: 'I' },
+        { label: 'J: some label', value: 'J' },
+        { label: 'K: some label', value: 'K' },
+        { label: 'L: some label', value: 'L' },
+        { label: 'M: some label', value: 'M' },
+        { label: 'N: some label', value: 'N' },
+    ],
+    labels: {
+        A: 'A: some label',
+        B: 'B: some label',
+        D: 'D: some label',
+        E: 'E: some label',
+        F: 'F: some label',
+        G: 'G: some label',
+        H: 'H: some label',
+        I: 'I: some label',
+        J: 'J: some label',
+        K: 'K: some label',
+        L: 'L: some label',
+        M: 'M: some label',
+        N: 'N: some label',
+    }
+});
+
+fetchMock.get(/\.\/api\/ref\/category/, {
+    options: [
+        { label: '', value: '' },
+        { label: 'Butter', value: 'B' },
+        { label: 'Casein', value: 'C' },
+        { label: 'Cheese', value: 'CH' },
+        { label: 'Condensed milk', value: 'CM' },
+        { label: 'Milk and Cream', value: 'MC' },
+        { label: 'Milk Powders', value: 'MP' },
+        { label: 'Other Dairy Products', value: 'ODP' },
+        { label: 'Dairy Stockfeed', value: 'DS' },
+        { label: 'Other', value: 'O' },
+    ],
+    labels: {
+        B: 'Butter',
+        C: 'Casein',
+        CH: 'Cheese',
+        CM: 'Condensed milk',
+        MC: 'Milk and Cream',
+        MP: 'Milk Powders',
+        ODP: 'Other Dairy Products',
+        DS: 'Dairy Stockfeed',
+        O: 'Other',
+    }
+});
+
+// fetchMock.put(/\.\/api\/settings\/cut-code/, {
+//     status: 400,
+//     body: [
+//         'you errored',
+//         'you errored again!'
+//     ]
+// })
 fetchMock.put(/\.\/api\/settings\/cut-code/, {
     id: 1,
     code: '0536',
     category: 'CM',
     description: 'some description',
     certificateApplications: true,
-    cutSuffixes: [
-        { label: 'A: description', checked: true },
-        { label: 'B: other description', checked: true },
-        { label: 'C: another description', checked: false },
-        { label: 'D: some description 1', checked: false },
-        { label: 'E: some description 2', checked: false },
-        { label: 'F: some description 3', checked: false },
-        { label: 'G: some description 4', checked: false },
-        { label: 'H: some description 5', checked: false },
-        { label: 'I: some description 6', checked: false },
-        { label: 'J: some description 7', checked: false },
-        { label: 'K: some description 8', checked: false },
-        { label: 'L: some description 9', checked: false },
-        { label: 'M: some description 10', checked: false },
-    ],
+    cutSuffixes: {
+        A: true,
+        B: true,
+        D: false,
+        E: false,
+        F: false,
+        G: false,
+        H: false,
+        I: false,
+        J: false,
+        K: false,
+        L: false,
+        M: false,
+        N: false,
+    },
     createdBy: 'someone',
     dateCreated: '12/12/2012 13:56',
     modifiedBy: 'someone else',
@@ -40,21 +99,21 @@ fetchMock.get(/\.\/api\/settings\/cut-code\/.+/, {
     category: 'CM',
     description: 'some description',
     certificateApplications: true,
-    cutSuffixes: [
-        { label: 'A: description', checked: true },
-        { label: 'B: other description', checked: true },
-        { label: 'C: another description', checked: false },
-        { label: 'D: some description 1', checked: false },
-        { label: 'E: some description 2', checked: false },
-        { label: 'F: some description 3', checked: false },
-        { label: 'G: some description 4', checked: false },
-        { label: 'H: some description 5', checked: false },
-        { label: 'I: some description 6', checked: false },
-        { label: 'J: some description 7', checked: false },
-        { label: 'K: some description 8', checked: false },
-        { label: 'L: some description 9', checked: false },
-        { label: 'M: some description 10', checked: false },
-    ],
+    cutSuffixes: {
+        A: true,
+        B: true,
+        D: false,
+        E: false,
+        F: false,
+        G: false,
+        H: false,
+        I: false,
+        J: false,
+        K: false,
+        L: false,
+        M: false,
+        N: false,
+    },
     createdBy: 'someone',
     dateCreated: '12/12/2012 13:56',
     modifiedBy: 'someone else',

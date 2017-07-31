@@ -13,8 +13,8 @@ class CutCodeListLoader extends Component {
     }
 
     componentDidMount() {
-        RestApiService.get('./api/settings/cut-code')
-            .then(data => this.setState((prevState, props) => ({ data })))
+        Promise.all([RestApiService.get('./api/settings/cut-code'), RestApiService.get('./api/ref/category')])
+            .then(([data, category]) => this.setState((prevState, props) => ({ data, category })))
             .catch(messages => this.setState((prevState, props) => ({ messages })))
     }
 
@@ -23,9 +23,9 @@ class CutCodeListLoader extends Component {
         history.push(`/settings/cut-code/${id}`)
     }
 
-    onFilterChange = (id) => (e) => {
+    onFilterChange = (e) => {
         let filter = Object.assign({}, this.state.filter)
-        filter[id] = e.target.value
+        filter[e.target.name] = e.target.value
         this.setState((prevState, props) => ({ filter }))
     }
 

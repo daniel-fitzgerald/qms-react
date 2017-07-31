@@ -15,29 +15,42 @@ class CutCodeLoader extends Component {
 
     componentDidMount() {
         const { match: { params: { id } } } = this.props
-        RestApiService.get(`./api/settings/cut-code/${id}`)
-            .then(data => this.setState((prevState, props) => ({ data })))
+        Promise.all([RestApiService.get(`./api/settings/cut-code/${id}`), RestApiService.get('./api/ref/category'), RestApiService.get('./api/ref/cut-suffix')])
+            .then(([data, category, cutSuffix]) => this.setState((prevState, props) => ({ data, category, cutSuffix })))
             .catch(messages => this.setState((prevState, props) => ({ messages })))
     }
 
-    onChange = (id) => (e) => {
+    onChange = (e) => {
+        const { name, checked, value, type } = e.target
+        let names = name.split('.')
         let data = Object.assign({}, this.state.data)
-        if (e.target.type === 'checkbox') {
-            data[id] = e.target.checked || false
+        if (names.length === 1) {
+            if (type === 'checkbox') {
+                data[name] = checked || false
+            } else {
+                data[name] = value
+            }
         } else {
-            data[id] = e.target.value
+            this.onChangeRecursive(data, type, value, checked, names)
         }
         let errors = this.validate(data)
         this.setState((prevState, props) => ({ data, errors }))
     }
 
-    onCutSuffixChange = (index) => (e) => {
-        let data = Object.assign({}, this.state.data)
-        let cutSuffixes = Object.assign([], data.cutSuffixes)
-        data.cutSuffixes = cutSuffixes
-        cutSuffixes[index].checked = e.target.checked || false
-        let errors = this.validate(data)
-        this.setState((prevState, props) => ({ data, errors }))
+    onChangeRecursive = (current, type, value, checked, [head, ...tail]) => {
+        if (tail.length === 1) {
+            let data = Object.assign(Array.isArray(current[head]) ? [] : {}, current[head])
+            current[head] = data
+            if (type === 'checkbox') {
+                data[tail[0]] = checked || false
+            } else {
+                data[tail[0]] = value
+            }
+        } else {
+            let data = Object.assign({}, current[head])
+            current[head] = data
+            this.onChangeRecursive(data, type, value, checked, tail)
+        }
     }
 
     validate = (data) => {
@@ -55,7 +68,7 @@ class CutCodeLoader extends Component {
             errors.description = ValidationService.getFieldMessage('required', 'Description')
         }
         if (ValidationService.hasValue(cutSuffixes)) {
-            let checkedCutSuffix = cutSuffixes.find(cutSuffix => cutSuffix.checked === true)
+            let checkedCutSuffix = Object.keys(cutSuffixes).find(key => cutSuffixes[key] === true)
             if (ValidationService.checkFieldMissing(checkedCutSuffix)) {
                 errors.cutSuffixes = ValidationService.getFieldMessage('atLeastOneRequired', 'Cut Suffix')
             }
@@ -71,7 +84,7 @@ class CutCodeLoader extends Component {
         let errors = this.validate(data)
         if (ValidationService.hasError(errors)) {
             let messages = ValidationService.getActionErrorMessages(errors, 'saved', 'Cut Code')
-            this.setState({ errors, messages })
+            this.setState((prevState, props) => { errors, messages })
             return
         }
 
@@ -94,7 +107,7 @@ class CutCodeLoader extends Component {
         if (data === null) {
             return <Loading {...this.state}></Loading>
         } else {
-            return <CutCode {...this.props} {...this.state} onSubmit={this.onSubmit} onChange={this.onChange} onClose={this.onClose} onCutSuffixChange={this.onCutSuffixChange} />
+            return <CutCode {...this.props} {...this.state} onSubmit={this.onSubmit} onChange={this.onChange} onClose={this.onClose} />
         }
     }
 }
